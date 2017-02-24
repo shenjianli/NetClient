@@ -69,7 +69,7 @@ public class TestPresenter extends BasePresenter<DataView> {
 
             @Override
             public void onNext(Test data) {
-                LogUtils.i("获取轮播区数据成功");
+                LogUtils.i("获取数据成功");
                 getMvpView().loadData(data);
                 getMvpView().hideLoading();
             }
