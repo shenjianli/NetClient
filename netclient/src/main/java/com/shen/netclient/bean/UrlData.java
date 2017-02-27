@@ -1,10 +1,20 @@
 package com.shen.netclient.bean;
 
+/**
+ * 与配置文件 xml目录中结构对应
+ */
 public class UrlData {
+
+	/**
+	 * 对应请求的url的key部分
+	 */
 	private String key;
 	private long expires;
 	private String netType;
 	private String url;
+	/**
+	 * 对应的mockservice类
+	 */
 	private String mockClass;
 
 	public UrlData() {

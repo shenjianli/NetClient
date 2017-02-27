@@ -1,5 +1,27 @@
 apply plugin: 'com.android.library'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'NetClient'
 
+    publishedGroupId = 'com.github.shenjianli.netclient'
+    libraryName = 'NetClient'
+    artifact = 'NetClient'
+
+    libraryDescription = 'A wrapper for Facebook Native Like Button (LikeView) on Android'
+
+    siteUrl = 'https://github.com/shenjianli/NetClient'
+    gitUrl = 'https://github.com/shenjianli/NetClient.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'shenjianli'
+    developerName = 'shenjianli'
+    developerEmail = 'cqtddt@163.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -29,3 +51,6 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.3.1'
 }
+
+apply from: './install.gradle'
+apply from: './bintray.gradle'

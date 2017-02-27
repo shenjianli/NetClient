@@ -11,7 +11,9 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * 表示使用mock数据时的管理器
+ */
 public class UrlConfigManager {
 
 	public static boolean MockServiceEnable = false;

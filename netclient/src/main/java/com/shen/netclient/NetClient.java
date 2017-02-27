@@ -13,9 +13,12 @@ import com.shen.netclient.net.interceptor.QueryParameterInterceptor;
 import com.shen.netclient.util.LogUtils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.Interceptor;
 import okhttp3.JavaNetCookieJar;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -27,9 +30,12 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class NetClient {
 
-	public static Retrofit retrofit = null;
+	private static Retrofit retrofit = null;
+    private static List<Interceptor> interceptors;
+    private static boolean canAddInterceptor = true;
     public static Retrofit retrofit() {
         if (retrofit == null) {
+            canAddInterceptor = false;
 	         OkHttpClient.Builder builder = new OkHttpClient.Builder();
             /**
              *设置缓存
@@ -108,5 +114,37 @@ public class NetClient {
                     .build();
         }
         return retrofit;
+    }
+
+    /**
+     * 向网络请求框架中加入拦截器
+     * @param interceptor 需要加入的拦截器
+     * @return true 加入成功  false加入失败
+     */
+    public static boolean addInterceptor(Interceptor interceptor){
+        if(canAddInterceptor){
+            if(null == interceptors){
+                interceptors = new ArrayList<>();
+            }
+            interceptors.add(interceptor);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 向网络请求框架中加入拦截器
+     * @param interceptors 需要加入的拦截器
+     * @return true 加入成功  false加入失败
+     */
+    public static boolean addInterceptors(List<Interceptor> interceptors){
+        if(canAddInterceptor){
+            if(null == interceptors){
+                interceptors = new ArrayList<>();
+            }
+            interceptors.addAll(interceptors);
+            return true;
+        }
+        return false;
     }
 }

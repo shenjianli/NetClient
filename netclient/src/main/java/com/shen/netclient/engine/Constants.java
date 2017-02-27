@@ -14,7 +14,13 @@ public class Constants {
     public static int PORT;
 
 
+    /**
+     * 缓存大小常量
+     */
     public static final int CACHE_SIZE = 1024 * 1024 * 50;  //NetClient中http请求缓存的最大值
 
+    /**\
+     * 表示网络请求的主url地址
+     */
     public static String SERVER_BASE_URL = "http://m.mall.icbc.com.cn/";
 }

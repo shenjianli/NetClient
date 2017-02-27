@@ -13,16 +13,6 @@ public class NetClientLib{
 
     private Context mMobileContext;
 
-    public boolean isConnect() {
-        return isConnect;
-    }
-
-    public void setConnect(boolean connect) {
-        isConnect = connect;
-    }
-
-    private boolean isConnect;
-
     private String serverBaseUrl = "";
 
     public Context getMobileContext() {
