@@ -4,8 +4,8 @@ ext {
     bintrayName = 'NetClient'
 
     publishedGroupId = 'com.github.shenjianli.netclient'
-    libraryName = 'NetClient'
-    artifact = 'NetClient'
+    libraryName = 'netclient'
+    artifact = 'netclient'
 
     libraryDescription = 'A wrapper for Facebook Native Like Button (LikeView) on Android'
 

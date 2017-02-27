@@ -32,7 +32,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "NetClient"
+        repo = "maven"
         name = bintrayName
         desc = libraryDescription
         websiteUrl = siteUrl
