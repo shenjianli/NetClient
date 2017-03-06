@@ -2,6 +2,9 @@ package com.shen.netclient.test;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.shen.netclient.NetClient;
 import com.shen.netclient.engine.NetClientLib;
 import com.shen.netclient.util.FileUtils;
 import com.shen.netclient.util.LogUtils;
@@ -14,6 +17,8 @@ public class App extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        Stetho.initializeWithDefaults(this);
+        NetClient.addNetworkInterceptor(new StethoInterceptor());
         NetClientLib.getLibInstance().setMobileContext(this);
         initByGradleFile();
         NetClientLib.getLibInstance().setBeanFactoryConfig(R.raw.bean);

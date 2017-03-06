@@ -32,6 +32,8 @@ public class NetClient {
 
 	private static Retrofit retrofit = null;
     private static List<Interceptor> interceptors;
+    private static List<Interceptor> networkInterceptors;
+
     private static boolean canAddInterceptor = true;
     public static Retrofit retrofit() {
         if (retrofit == null) {
@@ -46,7 +48,19 @@ public class NetClient {
             builder.cache(cache).addInterceptor(new CacheInterceptor());
             builder.interceptors().add(noNetcache);//无网络
             builder.networkInterceptors().add(noNetcache);//有网络
+
+            if(null != networkInterceptors && networkInterceptors.size() > 0){
+                for (Interceptor networkInterceptor:networkInterceptors ) {
+                    builder.addNetworkInterceptor(networkInterceptor);
+                }
+            }
             //builder.networkInterceptors().add(new StethoInterceptor());//有网络
+
+            if(null != interceptors && interceptors.size() >0 ){
+                for (Interceptor interceptor: interceptors) {
+                    builder.addInterceptor(interceptor);
+                }
+            }
 
             /**
              *  公共参数，代码略
@@ -115,6 +129,23 @@ public class NetClient {
         }
         return retrofit;
     }
+
+    /**
+     * 向网络请求框架中加入拦截器
+     * @param interceptor 需要加入的拦截器
+     * @return true 加入成功  false加入失败
+     */
+    public static boolean addNetworkInterceptor(Interceptor interceptor){
+        if(canAddInterceptor){
+            if(null == networkInterceptors){
+                networkInterceptors = new ArrayList<>();
+            }
+            networkInterceptors.add(interceptor);
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * 向网络请求框架中加入拦截器
