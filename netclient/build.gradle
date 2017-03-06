@@ -7,12 +7,12 @@ ext {
     libraryName = 'netclient'
     artifact = 'netclient'
 
-    libraryDescription = 'A wrapper for Facebook Native Like Button (LikeView) on Android'
+    libraryDescription = 'A NetClient of vesion 1.0.1'
 
     siteUrl = 'https://github.com/shenjianli/NetClient'
     gitUrl = 'https://github.com/shenjianli/NetClient.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     developerId = 'shenjianli'
     developerName = 'shenjianli'
@@ -30,7 +30,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
     }
     buildTypes {
         release {
