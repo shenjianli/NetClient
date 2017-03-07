@@ -14,17 +14,18 @@ import com.shen.netclient.util.LogUtils;
  */
 public class App extends Application{
     private static App mMobileApp;
+
     @Override
     public void onCreate() {
         super.onCreate();
         Stetho.initializeWithDefaults(this);
         NetClient.addNetworkInterceptor(new StethoInterceptor());
+
         NetClientLib.getLibInstance().setMobileContext(this);
         initByGradleFile();
         NetClientLib.getLibInstance().setBeanFactoryConfig(R.raw.bean);
         mMobileApp = this;
     }
-
 
     /*
     根据主项目中的gradle配置文件开初始化不同的开发模式
