@@ -10,16 +10,29 @@
     >
 
     <TextView
-        android:id="@+id/city_tv"
-        android:text="Hello World!"
+        android:id="@+id/cookie_result"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/get_btn"
-        android:layout_below="@id/city_tv"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="获取网络数据"/>
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:id="@+id/save_cookie_btn"
+            android:text="存储Cookie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/get_cookie_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取Cookie"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

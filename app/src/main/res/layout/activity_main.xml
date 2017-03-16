@@ -9,9 +9,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:onClick="click"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/main_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MockServer"
+            />
+
+
+        <Button
+            android:id="@+id/main_cookie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cookie"
+            />
+
+        <Button
+            android:id="@+id/main_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WebView"
+            />
+    </LinearLayout>
+
 </RelativeLayout>
