@@ -7,12 +7,12 @@ ext {
     libraryName = 'netclient'
     artifact = 'netclient'
 
-    libraryDescription = 'A NetClient of vesion 1.0.1'
+    libraryDescription = 'A NetClient of vesion 1.0.2'
 
     siteUrl = 'https://github.com/shenjianli/NetClient'
     gitUrl = 'https://github.com/shenjianli/NetClient.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
 
     developerId = 'shenjianli'
     developerName = 'shenjianli'
