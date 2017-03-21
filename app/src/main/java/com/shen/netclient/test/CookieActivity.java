@@ -55,7 +55,7 @@ public class CookieActivity extends AppCompatActivity {
                 StringBuilder cookieStr = new StringBuilder();
                 if(null != cookie){
                     for (Cookie cookie1 : cookie) {
-                        cookieStr.append(cookie1.name() + "=" + cookie1.value() + " ");
+                        cookieStr.append(cookie1.name() + "=" + cookie1.value() + ",domain:" + cookie1.domain() + ",path:" + cookie1.path() + "       ");
                     }
                 }
                 cookieResult.setText(cookieStr.toString());

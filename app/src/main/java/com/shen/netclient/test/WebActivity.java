@@ -1,8 +1,10 @@
 package com.shen.netclient.test;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -37,6 +39,22 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         ButterKnife.bind(this);
+
+        WebSettings webSettings = webResult.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setSavePassword(false);
+        webSettings.setSaveFormData(false);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setDatabaseEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setGeolocationEnabled(true);
+        webSettings.setGeolocationDatabasePath(this.getDir("geodatabase", Context.MODE_PRIVATE).getPath());
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAppCacheMaxSize(8 * 1024 * 1024);
+        webSettings.setAppCachePath(getDir("cache", Context.MODE_PRIVATE).getPath());
+        webSettings.setDatabasePath(getDir("database", Context.MODE_PRIVATE).getPath());
     }
 
     @Override
@@ -57,7 +75,7 @@ public class WebActivity extends AppCompatActivity {
 
     @OnClick(R.id.client_load_btn)
     public void onClick() {
-        loadDataByRxAndroid();
+        loadDataByRxAndroid1();
     }
 
     private Subscriber<PlatformRes> testSubscriber;
@@ -77,11 +95,41 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onNext(PlatformRes data) {
                 LogUtils.i("获取数据成功");
+                clientLoadBtn.setText(data.getData().getPlatform().get(0).getTitleName());
 
             }
         };
         PlatformApi testApi = NetClient.retrofit().create(PlatformApi.class);
         testApi.getPlatfromDataByRxAndroid().map(new HttpResultFunc<PlatformRes>())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(testSubscriber);
+    }
+
+
+    public void loadDataByRxAndroid1() {
+
+        testSubscriber = new Subscriber<PlatformRes>() {
+            @Override
+            public void onCompleted() {
+                LogUtils.i("表求完成");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.i(e.getStackTrace().toString());
+            }
+
+            @Override
+            public void onNext(PlatformRes data) {
+                LogUtils.i("获取数据成功");
+                clientLoadBtn.setText(data.getData().getPlatform().get(0).getTitleName());
+
+            }
+        };
+        PlatformApi testApi = NetClient.retrofit().create(PlatformApi.class);
+        testApi.getPlatfromDataByRxAndroid1()
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -96,7 +96,7 @@ public class NetClient {
 
             PersistentCookieStore persistentCookieStore = new PersistentCookieStore(NetClientLib.getLibInstance().getMobileContext());
             WebkitCookieManagerProxy coreCookieManager = new WebkitCookieManagerProxy(persistentCookieStore, java.net.CookiePolicy.ACCEPT_ALL);
-            //java.net.CookieHandler.setDefault(coreCookieManager);
+            java.net.CookieHandler.setDefault(coreCookieManager);
             builder.cookieJar(new JavaNetCookieJar(coreCookieManager));
 
 
@@ -117,6 +117,7 @@ public class NetClient {
 
             //以上设置结束，才能build(),不然设置白搭
             okHttpClient = builder.build();
+
             String url = NetClientLib.getLibInstance().getServerBaseUrl();
             if (TextUtils.isEmpty(url)) {
                 url = Constants.SERVER_BASE_URL;
@@ -236,7 +237,7 @@ public class NetClient {
             return null;
         }
         String serverUrl = NetClientLib.getLibInstance().getServerBaseUrl();
-        if (!TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(url)) {
             if (!TextUtils.isEmpty(serverUrl)) {
                 url = serverUrl;
             } else {

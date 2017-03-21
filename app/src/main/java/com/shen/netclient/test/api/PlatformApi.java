@@ -16,4 +16,9 @@ public interface PlatformApi {
     //id为请求的参数，可以根据参数不同返回不同的返回结果
     Observable<BaseData<PlatformRes>> getPlatfromDataByRxAndroid();
 
+    //请求的url地址
+    @GET("mobile/indexPlatformNew.jhtml?flag=1")
+    //id为请求的参数，可以根据参数不同返回不同的返回结果
+    Observable<PlatformRes> getPlatfromDataByRxAndroid1();
+
 }
