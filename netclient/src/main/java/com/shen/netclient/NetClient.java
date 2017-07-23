@@ -7,9 +7,7 @@ import com.shen.netclient.engine.NetClientLib;
 import com.shen.netclient.net.cookie.PersistentCookieStore;
 import com.shen.netclient.net.cookie.WebkitCookieManagerProxy;
 import com.shen.netclient.net.interceptor.CacheInterceptor;
-import com.shen.netclient.net.interceptor.HeaderInterceptor;
 import com.shen.netclient.net.interceptor.MockServerInterceptor;
-import com.shen.netclient.net.interceptor.QueryParameterInterceptor;
 import com.shen.netclient.util.LogUtils;
 
 import java.io.File;
@@ -71,12 +69,12 @@ public class NetClient {
              */
 
             //公共参数
-            builder.addInterceptor(new QueryParameterInterceptor());
+            //builder.addInterceptor(new QueryParameterInterceptor());
             /**
              * 设置头，代码略
              */
             //设置头
-            builder.addInterceptor(new HeaderInterceptor());
+            //builder.addInterceptor(new HeaderInterceptor());
             /**
              * Log信息拦截器，代码略
              */
