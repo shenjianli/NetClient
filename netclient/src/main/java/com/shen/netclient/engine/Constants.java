@@ -22,5 +22,5 @@ public class Constants {
     /**\
      * 表示网络请求的主url地址
      */
-    public static String SERVER_BASE_URL = "http://m.mall.icbc.com.cn";
+    public static String SERVER_BASE_URL = "http://m.shen.com.cn";
 }

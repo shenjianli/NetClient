@@ -66,7 +66,7 @@ public class WebActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.web_load_btn:
-                webResult.loadUrl("http://m.mall.icbc.com.cn/mobile/touch/index.jhtml");
+                webResult.loadUrl("http://m.mall.shen.com.cn/mobile/touch/index.jhtml");
                 break;
             case R.id.web_result:
                 break;

@@ -44,8 +44,8 @@ public class CookieActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.save_cookie_btn:
                 List<Cookie> cookies = new ArrayList<>();
-                Cookie cooke = new Cookie.Builder().name("shen").value("jianli").domain("m.mall.icbc.com.cn").path("/").build();
-                Cookie cooke1 = new Cookie.Builder().name("type").value("android").domain("m.mall.icbc.com.cn").path("/").build();
+                Cookie cooke = new Cookie.Builder().name("shen").value("jianli").domain("m.mall.shen.com.cn").path("/").build();
+                Cookie cooke1 = new Cookie.Builder().name("type").value("android").domain("m.mall.shen.com.cn").path("/").build();
                 cookies.add(cooke);
                 cookies.add(cooke1);
                 NetClient.addCookie(Constants.SERVER_BASE_URL,cookies);
